@@ -8,6 +8,7 @@ public class CustomFont {
     private int[] colorCode;
     private String fontName;
     public int size;
+    public int regularSize;
 
     public CustomFont(String fontName, int fontSize) {
         this.setFont(fontName, fontSize);
@@ -56,6 +57,7 @@ public class CustomFont {
         this.stringCache = new StringCache(this.colorCode);
         this.stringCache.setDefaultFont(fontName, fontSize, true);
         this.fontName = fontName;
+        this.regularSize = fontSize;
         this.size = fontSize;
     }
 
@@ -68,6 +70,8 @@ public class CustomFont {
     }
 
     public int renderString(String str, float posX, float posY, int color, boolean shadow) {
+        this.size = this.regularSize / Minecraft.getMinecraft().gameSettings.guiScale;
+
         return this.stringCache.renderString(str, (int)posX, (int)posY, color, shadow);
     }
 
