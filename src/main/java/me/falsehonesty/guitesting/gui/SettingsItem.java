@@ -2,6 +2,8 @@ package me.falsehonesty.guitesting.gui;
 
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.List;
  */
 
 public class SettingsItem extends ScrollingItem {
+
     private static final int START_Y = 120;
 
     private List<Expander> expanders;
@@ -24,10 +27,10 @@ public class SettingsItem extends ScrollingItem {
             List<ListItem> listItems = new ArrayList<>();
 
             for (int j = 0; j < 10; j++) {
-                listItems.add(new ListItem("Setting " + j, null, 0xFF7096FF));
+                listItems.add(new ListItem("Setting " + j, null, Color.WHITE.getRGB()));
             }
 
-            expanders.add(new Expander("Header " + i, 0xFFBFD0FF, listItems.toArray(new ListItem[listItems.size()])));
+            expanders.add(new Expander("Header " + i, Color.WHITE.getRGB(), listItems.toArray(new ListItem[listItems.size()])));
         }
 
         int scaledHeight = new ScaledResolution(mc).getScaledHeight();
@@ -37,7 +40,7 @@ public class SettingsItem extends ScrollingItem {
 
     @Override
     public void handleMouseInput(int mouseX, int mouseY) {
-        if (!collides(100, START_Y, 200,new ScaledResolution(mc).getScaledHeight() - 50, mouseX, mouseY)) {
+        if (!collides(100, START_Y, 200, new ScaledResolution(mc).getScaledHeight() - 50, mouseX, mouseY)) {
             return;
         }
 
@@ -196,7 +199,7 @@ public class SettingsItem extends ScrollingItem {
 
         protected void render(int x, int y, int mouseX, int mouseY) {
             int offset = GuiItem.easeIn(5, 20, (double) jump / (double) 100);
-            int color = GuiItem.easeOut(0xFFFFFFFF, this.color, (double) jump / (double) 100);
+            int color = GuiItem.easeOut(Color.WHITE.getRGB(), this.color, (double) jump / (double) 100);
 
             boolean hovering = collidesText(y, title, mouseX - offset, mouseY, medFr);
 

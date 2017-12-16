@@ -4,6 +4,7 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import org.lwjgl.opengl.GL11;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +16,7 @@ public class MenuBarItem extends GuiItem {
 
     public MenuBarItem() {
         this.menuItems = new ArrayList<>();
-        int spacing = 20;
+        int spacing = 25;
 
         ScaledResolution sr = new ScaledResolution(mc);
         float barWidth = fr.getStringWidth("HOMEIRCINFOSPONSORS") + (spacing * 3);
@@ -30,7 +31,7 @@ public class MenuBarItem extends GuiItem {
         this.menuItems.add(new MenuItem("INFO", x, false, null));
         x += (bigFr.getStringWidth("INFO")) + spacing;
 
-        this.menuItems.add(new MenuItem("SPONSORS", x, true, null));
+        this.menuItems.add(new MenuItem("SPONSORS", x - 5, true, null));
     }
 
     @Override
@@ -48,6 +49,7 @@ public class MenuBarItem extends GuiItem {
     }
 
     class MenuItem extends GuiItem {
+
         private static final float SCALE = 2.0f;
         private String name;
         private int x;
@@ -64,18 +66,18 @@ public class MenuBarItem extends GuiItem {
         public void drawItem(int mouseX, int mouseY) {
             int strWidth = bigFr.getStringWidth(name);
 
-            boolean mouseOver = collides(x, 20, (x + strWidth), 20 + bigFr.size,
+            boolean mouseOver = collides(x, 31, (x + strWidth), 8 + bigFr.size,
                     mouseX, mouseY);
 
-            int color = mouseOver ? 0xFFE6812A : 0xFFFFFFFF;
+            int color = mouseOver ? 0xFFE6812A : Color.WHITE.getRGB();
             int dropShadow = (color & 16579836) >> 2 | color & -16777216;
 
-            bigFr.renderStringWithShadow(name, x, 20, color);
+            bigFr.renderStringWithShadow(name, x, 20 + bigFr.size / 2, color);
 
             if (!this.isLast) {
                 GL11.glPushMatrix();
-                    GL11.glScalef(2.5f, 1.0f, 1.0f);
-                    drawVerticalLine((int) ((x + strWidth + 11) / 2.5f), 20, 20 + bigFr.size, 0xFFFFFFFF);
+                GL11.glScalef(2.5f, 1.0f, 1.0f);
+                drawVerticalLine((int) ((x + strWidth + 11) / 2.5f), 20, 20 + bigFr.size, Color.WHITE.getRGB());
                 GL11.glPopMatrix();
             }
         }

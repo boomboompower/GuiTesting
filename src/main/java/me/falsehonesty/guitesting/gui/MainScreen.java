@@ -1,8 +1,10 @@
 package me.falsehonesty.guitesting.gui;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.GL11;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,6 +14,7 @@ import java.util.ArrayList;
  */
 
 public class MainScreen extends GuiScreen {
+
     private ArrayList<GuiItem> items;
 
     public MainScreen() {

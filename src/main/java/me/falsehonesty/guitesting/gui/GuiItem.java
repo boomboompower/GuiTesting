@@ -4,6 +4,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import org.lwjgl.opengl.GL11;
 
+import java.awt.*;
+
 /**
  * Copyright 2017 (c) FalseHonesty
  */
@@ -30,11 +32,11 @@ public abstract class GuiItem extends Gui {
 
             int textWidth = fr.getStringWidth(text);
             int textHeight = fr.size;
-            drawRect(startX, startY, (startX + textWidth + 20), (startY + textHeight + 15), 0xFFFFFFFF);
+            drawRect(startX, startY - 10, (startX + textWidth + 15), (startY + textHeight - 10), Color.WHITE.getRGB());
 
             GL11.glPolygonMode(GL11.GL_FRONT_AND_BACK, GL11.GL_FILL);
 
-            fr.renderStringWithShadow(text, (startX + 7), (startY + 7), 0xFFFFFFFF);
+            fr.renderStringWithShadow(text, (startX + 7), (startY + 7), Color.WHITE.getRGB());
         GL11.glPopMatrix();
     }
 

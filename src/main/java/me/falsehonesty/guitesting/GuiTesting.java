@@ -2,7 +2,7 @@ package me.falsehonesty.guitesting;
 
 import me.falsehonesty.guitesting.gui.CustomFont;
 import me.falsehonesty.guitesting.gui.MainScreen;
-import me.falsehonesty.guitesting.gui.NahrFont;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.common.MinecraftForge;
@@ -12,9 +12,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import org.lwjgl.input.Keyboard;
 
-import java.io.InputStream;
+import org.lwjgl.input.Keyboard;
 
 /**
  * Copyright 2017 (c) FalseHonesty
